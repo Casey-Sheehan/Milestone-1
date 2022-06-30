@@ -16,7 +16,7 @@ public class SalableItem {
 	public String itemDescription;
 	public float itemPrice;
 	public int itemQuantity;
-	public String itemDept;
+	public InventoryManager itemDept;
 	
 	/**
 	 * Constructor
@@ -26,13 +26,12 @@ public class SalableItem {
 	 * @param newItemQuantity
 	 * @param newItemDept
 	 */
-	public SalableItem(String newItemName, String newItemDescription, float newItemPrice, int newItemQuantity, String newItemDept)
+	public SalableItem(String newItemName, String newItemDescription, float newItemPrice, int newItemQuantity)
 	{
 		this.itemName = newItemName;
 		this.itemDescription = newItemDescription;
 		this.itemPrice = newItemPrice;
 		this.itemQuantity = newItemQuantity;
-		this.itemDept = newItemDept;
 		
 	}
 	

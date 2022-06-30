@@ -15,6 +15,7 @@ public class InventoryManager {
 
 	String departmentName;
 	List<SalableItem> departmentItems = new ArrayList<SalableItem>();
+	List<String> departmentItemsStrings = new ArrayList<String>();
 	int totalItems = departmentItems.size();
 	
 	public InventoryManager(String newDeptName)
