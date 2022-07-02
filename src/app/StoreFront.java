@@ -24,6 +24,9 @@ public class StoreFront {
 		// TODO Audto-generated method stub
 		Scanner input = new Scanner(System.in);
 		StoreFront Shop = new StoreFront("Test Shop");
+		
+		
+		/* 
 		System.out.println("Test1");
 		SalableItem Item = new SalableItem("Scissors", "Great for cutting!", (float) 12.99, 1);
 		SalableItem Item2 = new SalableItem("Soda", "Yuck", (float) 1.99, 10);
@@ -37,17 +40,21 @@ public class StoreFront {
 		craftDept.removeItems(Item2);
 		craftDept.InventoryManagerTest2();
 		craftDept.addItems(Item);
+		*/
 
 
+		/* 
 		SalableItem longSword = new SalableItem("Long Sword", "A nice shiny Long Sword!", (float) 50, 2);
 		SalableItem maceItem = new SalableItem("Mace", "A heavy spiky mace!", (float) 25, 5);
 		
 		InventoryManager Weapons = new InventoryManager("Weapons");
 		Weapons.addItems(longSword);
 		Weapons.addItems(maceItem);
+		*/
 
-		SalableItem chainMail = new SalableItem("Chain Mail", "Made of Mithril", (float) 150, 1);
-		SalableItem plateMail = new SalableItem("Plate Mail", "Plated Mail!", (float) 250, 2);
+
+		Armor chainMail = new Armor("Chain Mail", "Made of Mithril", (float) 150, 1);
+		Armor plateMail = new Armor("Plate Mail", "Plated Mail!", (float) 250, 2);
 
 		InventoryManager Armors = new InventoryManager("Armors");
 		Armors.addItems(chainMail);

@@ -12,11 +12,11 @@ import app.ShoppingCart;
 public abstract class SalableItem {
 	
 	
-	public String itemName;
-	public String itemDescription;
-	public float itemPrice;
-	public int itemQuantity;
-	public InventoryManager itemDept;
+	String itemName;
+	String itemDescription;
+	float itemPrice;
+	int itemQuantity;
+	InventoryManager itemDept;
 	
 	/**
 	 * Constructor
@@ -39,7 +39,8 @@ public abstract class SalableItem {
 	/**
 	 *  series of tests and console prints to ensure initial functionality
 	 */
-	public void salableItemTest()
+	
+	/**  public void salableItemTest()
 	{
 		System.out.println("Begin SalableItem Test:");
 		System.out.println("getName returns: " + this.getName());
@@ -56,7 +57,7 @@ public abstract class SalableItem {
 		System.out.println("setQuantity perfomed, the quantity is now: " + this.getQuantity());
 		System.out.println("Test Complete, Great work!");
 	}
-	
+	*/ 
 	
 	/**
 	 * 
@@ -82,7 +83,7 @@ public abstract class SalableItem {
 	 */
 	public String getName()
 	{
-		return itemName.toString();
+		return itemName;
 	}
 	
 	/**
