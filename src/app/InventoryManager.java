@@ -72,7 +72,7 @@ public class InventoryManager {
 	 */
 	public void getDeptItems()
 	{
-		System.out.println(departmentItems);
+		System.out.println(departmentItemsStrings);
 	}
 	
 	/**

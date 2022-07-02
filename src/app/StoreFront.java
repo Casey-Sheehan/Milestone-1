@@ -5,7 +5,7 @@ import app.ShoppingCart;
 
 import java.util.Scanner;
 
-import app.Crafts;
+
 
 public class StoreFront {
 
@@ -55,41 +55,7 @@ public class StoreFront {
 
 		 
 
-
-		String Store = input.nextLine();
-		
-		
-		while (Store != "End")
-		{
-			if (Store == "End")
-			{
-				break;
-			}
-			Scanner console = new Scanner(System.in);
-			System.out.println("Welcome to the Store!");
-			System.out.println("Type End to end the program");
-			System.out.println("Type Armor for today's armor inventory");
-			System.out.println("Type Weapons for weapons inventory");
-			if (Store == "Armor")
-			{
-				System.out.println("Type 'List Armor' to list the inventory");
-				if (Store == "List Armor")
-					{
-						System.out.println(Weapons.departmentItems);
-
-					}
-			}
-			if (input.nextLine() == "Weapons")
-			{
-				System.out.println("Type 'List Weapons' to list the inventory.");
-				input.nextLine();
-			}
-
-
-
-
-
-		}
+	
 		
 		System.out.println("Test done");
 	

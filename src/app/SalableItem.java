@@ -9,7 +9,7 @@ import app.ShoppingCart;
  * @author casey
  *
  */
-public class SalableItem {
+public abstract class SalableItem {
 	
 	
 	public String itemName;
@@ -82,7 +82,7 @@ public class SalableItem {
 	 */
 	public String getName()
 	{
-		return itemName;
+		return itemName.toString();
 	}
 	
 	/**
