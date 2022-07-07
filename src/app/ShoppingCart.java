@@ -28,6 +28,7 @@ public class ShoppingCart {
 		this.totalCost = firstItem.getPrice();
 	}
 	
+	
 
 	
 }

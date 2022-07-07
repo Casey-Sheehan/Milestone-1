@@ -1,13 +1,18 @@
 package app;
 
-public class Armor abstract SalableItem
+
+
+public class Armor extends SalableItem
 {
 
-    public Armor(String newItemName, String newItemDescription, float newItemPrice, int newItemQuantity) {
-        super(newItemName, newItemDescription, newItemPrice, newItemQuantity);
-        //TODO Auto-generated constructor stub
+    public Armor(String itemName, String itemDescription, int itemPrice, int itemQuantity) {
+        super.itemName = itemName;
+        super.itemDescription = itemDescription;
+        super.itemPrice = itemPrice;
+        super.itemQuantity = itemQuantity;
     }
 
+    
 
     
 }

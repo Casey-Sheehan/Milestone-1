@@ -95,37 +95,25 @@ public class InventoryManager {
 	
 	/**
 	 * Returns the total size of the List
-	 * @return
+	 * @return int 
 	 */
 	public int getTotalItems()
 	{
-		int totalInDept = departmentItems.size();
-		return totalInDept;
+		return departmentItems.size();
 	}
 	
 	
-	
-	/**
-	 * find way to store all items in the department into a list
-	 * arrays do not seem well suited to this
-	public String[] removeItems(String byeItem)
+	/** 
+	 * @param i
+	 * @return int
+	 */
+	public int getItemPrice(int i)
 	{
-		
-		String[] tempArr = new String[departmentItems.length - 1];
-		int foundItemLocation;
-		for (int i = 0; i < departmentItems.length; ++i)
-		{
-			if (departmentItems[i] == byeItem)
-			{
-				foundItemLocation = i;
-				continue;
-			}
-			else 
-			{
-				tempArr[i] = departmentItems[i];
-			
-			}
-	*/
+		return this.departmentItems.get(i).itemPrice;		
+	}
+	
+	
+
 	
 	
 	

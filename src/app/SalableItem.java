@@ -9,33 +9,23 @@ import app.ShoppingCart;
  * @author casey
  *
  */
-public abstract class SalableItem {
-	
+public abstract class SalableItem 
+{
 	
 	String itemName;
 	String itemDescription;
-	float itemPrice;
+	int itemPrice;
 	int itemQuantity;
 	InventoryManager itemDept;
 	
 	/**
 	 * Constructor
-	 * @param newItemName
-	 * @param newItemDescription
-	 * @param newItemPrice
-	 * @param newItemQuantity
-	 * @param newItemDept
+	 * @param newItemName String
+	 * @param newItemDescription String
+	 * @param newItemPrice Float
+	 * @param newItemQuantity Int
 	 */
-	public SalableItem(String newItemName, String newItemDescription, float newItemPrice, int newItemQuantity)
-	{
-		this.itemName = newItemName;
-		this.itemDescription = newItemDescription;
-		this.itemPrice = newItemPrice;
-		this.itemQuantity = newItemQuantity;
-		
-	}
 	
-
 	/**
 	 *  series of tests and console prints to ensure initial functionality
 	 */
@@ -58,12 +48,18 @@ public abstract class SalableItem {
 		System.out.println("Test Complete, Great work!");
 	}
 	*/ 
+
+	@Override
+	public String toString()
+	{
+		return this.itemName;
+	}
 	
 	/**
 	 * 
 	 * @return float itemPrice
 	 */
-	public float getPrice()
+	public int getPrice()
 	{
 		return itemPrice;
 	}
@@ -72,7 +68,7 @@ public abstract class SalableItem {
 	 * 
 	 * @param newPrice will replace itemPrice
 	 */
-	public void setPrice(float newPrice)
+	public void setPrice(int newPrice)
 	{
 		itemPrice = newPrice;
 	}
@@ -130,12 +126,6 @@ public abstract class SalableItem {
 	{
 		itemQuantity = newQuantity;
 	}
-
-
-
-
-
-
 
 
 
