@@ -102,8 +102,53 @@ public class StoreFront {
 						if (userChoice == 1 && userWallet >= Armors.departmentItems.get(lastChoice - 1).itemPrice)
 						{
 							System.out.println(" test " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
-							Armors.removeItems(chainMail);
-							System.out.println("Chainmail Sold to user!");
+							System.out.println(Armors.departmentItems.get(lastChoice - 1) + " Sold to user!");
+							Armors.removeItems(Armors.departmentItems.get(lastChoice - 1));
+							return;
+						}
+
+						// Insufficient Funds
+						if (userChoice == 1 && userWallet < Armors.departmentItems.get(lastChoice - 1).itemPrice)
+						{
+
+							System.out.println(" test " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
+							System.out.println("Insufficient Funds");
+							continue;
+						}
+
+						//Returns to previous menu (hopefully)
+						if (userChoice == 2)
+						{
+							return;
+						}
+
+						// Cycles back if improper response
+						else
+						{
+							System.out.println("Improper Response");
+							continue;
+						}
+					} while (userChoice != 0);
+				}
+
+				if (userChoice == 2)
+				{
+					System.out.println("You have selected " + Armors.departmentItems.get(userChoice - 1).toString());
+					System.out.println("Would you like to purchase this item or return to the Original menu?");
+				
+					// Do while choice != 0
+					do	{
+						// lastChoice is stored for purchase/price checking later
+						System.out.print("type 1 to buy or 2 to cancel: ");
+						int lastChoice = userChoice;
+						userChoice = input.nextInt();
+					
+						// Has enough funds
+						if (userChoice == 1 && userWallet >= Armors.departmentItems.get(lastChoice - 1).itemPrice)
+						{
+							System.out.println(" test " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
+							System.out.println(Armors.departmentItems.get(lastChoice - 1) + " Sold to user!");
+							Armors.removeItems(Armors.departmentItems.get(lastChoice - 1));
 							return;
 						}
 
@@ -170,8 +215,56 @@ public class StoreFront {
 				if (userChoice == 1 && userWallet >= Weapons.departmentItems.get(lastChoice - 1).itemPrice)
 				{
 					System.out.println(" test " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
+					System.out.println(Weapons.departmentItems.get(lastChoice - 1) + " Sold to user!");
 					Weapons.removeItems(Weapons.departmentItems.get(lastChoice - 1));
-					System.out.println("Chainmail Sold to user!");
+					return;
+				}
+
+				// Insufficient Funds
+				if (userChoice == 1 && userWallet < Weapons.departmentItems.get(lastChoice - 1).itemPrice)
+				{
+					System.out.println(" test " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
+					System.out.println("Insufficient Funds");
+					continue;
+				}
+
+				//Returns to previous menu (hopefully)
+				if (userChoice == 2)
+				{
+					return;
+				}
+
+				// Cycles back if improper response
+				else
+				{
+					System.out.println("Improper Response");
+					continue;
+				}
+			} while (userChoice != 0);
+		}
+
+
+		// Weapons list index 1, userchoice 2
+		if (userChoice == 2)
+			{
+				System.out.println("You have selected " + Weapons.departmentItems.get(userChoice - 1).toString());
+				System.out.println("Would you like to purchase this item or return to the Original menu?");
+		
+			// Do while choice != 0
+			do	
+			{
+				// Sell or return
+				// lastChoice is stored for purchase/price checking later
+				System.out.print("type 1 to buy or 2 to cancel: ");
+				final int lastChoice = userChoice;
+				userChoice = input.nextInt();
+			
+				// Has enough funds
+				if (userChoice == 1 && userWallet >= Weapons.departmentItems.get(lastChoice - 1).itemPrice)
+				{
+					System.out.println(" test " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
+					System.out.println(Weapons.departmentItems.get(lastChoice - 1) + " Sold to user!");
+					Weapons.removeItems(Weapons.departmentItems.get(lastChoice - 1));
 					return;
 				}
 
@@ -198,12 +291,6 @@ public class StoreFront {
 			} while (userChoice != 0);
 		}
 		
-
-
-
-
-
-
 		if (userChoice == 3)
 		{
 			System.out.println("Ending program, Goodbye!");

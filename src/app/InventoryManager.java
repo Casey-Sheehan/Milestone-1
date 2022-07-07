@@ -18,7 +18,7 @@ public class InventoryManager {
 	List<String> departmentItemsStrings = new ArrayList<String>();
 	int totalItems = departmentItems.size();
 	
-	public InventoryManager(String newDeptName)
+	protected InventoryManager(String newDeptName)
 	{
 		this.departmentName = newDeptName;
 	}
@@ -64,7 +64,7 @@ public class InventoryManager {
 	 */
 	public void setDeptName(String newName)
 	{
-		departmentName = newName;
+		this.departmentName = newName;
 	}
 	
 	/**
