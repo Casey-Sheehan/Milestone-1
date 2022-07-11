@@ -10,9 +10,5 @@ public class Armor extends SalableItem
         super.itemDescription = itemDescription;
         super.itemPrice = itemPrice;
         super.itemQuantity = itemQuantity;
-    }
-
-
-
-    
+    }    
 }
