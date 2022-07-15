@@ -3,6 +3,8 @@ package app;
 
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner6;
+
 
 
 
@@ -33,8 +35,8 @@ public class StoreFront {
 		int i;
 		int userWallet = 1000;
 
-
-
+		Weapon PlaceHolder = new Weapon("Place Holder", "Empty Place Holder", 0, 1);
+		ShoppingCart Cart = new ShoppingCart(PlaceHolder);
 		 
 		Weapon longSword = new Weapon("Long Sword", "A nice shiny Long Sword!",  50, 2);
 		Weapon maceItem = new Weapon("Mace", "A heavy spiky mace!", 25, 5);
@@ -56,19 +58,156 @@ public class StoreFront {
 		System.out.println("this armor is a: " + chainMail.toString());
 		System.out.println("this list contains: " + Armors.departmentItems);
 		System.out.println("This longsword has a description of: " + longSword.itemDescription);
-
+		int lastChoice = 0;
 
 		System.out.println("getItemPrice(index) test: " + Armors.departmentItems.get(0).itemPrice);
 
 		// Beginning of Shop Interface
+
+	
+
+	do{
 		System.out.println("=======");
 		System.out.println("Welcome to " + Shop.shopName);
 		System.out.println("Menu");
 		System.out.println("=======");
 		System.out.println("1. List Armors");
 		System.out.println("2. List Weapons");
-		System.out.println("3. Exit");
+		System.out.println("3. Cart Total");
+		System.out.println("4. Checkout");
+		System.out.println("5. Exit");
+		System.out.print("Please Select an Option Listed Above: ");
+		userChoice = input.nextInt();
+		
+		switch (userChoice)
+		{
+			case 1:
+				for (i = 0; i < Armors.departmentItems.size(); ++i)
+					{
+						System.out.println("Item " + (i + 1) + ": " + Armors.departmentItems.get(i).toString());
+					}
+					System.out.print("Choose an item from the above list: ");
+					lastChoice = userChoice;
+					userChoice = input.nextInt();
+					
 
+					switch (userChoice)
+					{
+						case 1:
+							System.out.println("You have selected: " + Armors.departmentItems.get(lastChoice - 1).toString());
+							System.out.print("Select 1 to add to cart or 2 to return to Main Menu: ");
+							userChoice = input.nextInt();
+							if (userChoice == 1)
+								{
+									Cart.activeCart.add(Armors.departmentItems.get(lastChoice - 1));
+									Armors.removeItems(Armors.departmentItems.get(lastChoice - 1));
+									System.out.println(Cart.activeCart.get(lastChoice).toString() + " has been added to the cart.");
+									continue;
+								}
+							else 
+							{
+								continue;
+							}
+						
+						case 2:
+							System.out.println("You have selected: " + Armors.departmentItems.get(lastChoice - 1).toString());
+							System.out.print("Select 1 to add to cart or 2 to return to Main Menu: ");
+							userChoice = input.nextInt();
+								if (userChoice == 1)
+								{
+									Cart.activeCart.add(Armors.departmentItems.get(lastChoice - 1));
+									Armors.removeItems(Armors.departmentItems.get(lastChoice - 1));
+									System.out.println(Cart.activeCart.get(lastChoice).toString() + " has been added to the cart.");
+									continue;
+								}
+								
+								else
+								{
+									continue;
+								}
+						case 0:
+								continue;
+								
+						}
+						break;
+					
+				
+	
+			
+
+
+			case 2:
+				for (i=0;i<Weapons.departmentItems.size();++i)
+				{
+					System.out.println("Item " + (i + 1) + ": " + Weapons.departmentItems.get(i).toString());
+				}
+				System.out.print("Choose an option from the list above: ");
+				
+				userChoice = input.nextInt();
+
+				switch (userChoice) {
+				
+					lastChoice = userChoice;
+					case 1: 
+					System.out.println("You have selected: " + Weapons.departmentItems.get(lastChoice - 1).toString());
+					System.out.print("Select 1 to add to cart or 2 to return to Main Menu: ");
+					userChoice = input.nextInt();
+					if (userChoice == 1)
+						{
+							Cart.activeCart.add(Weapons.departmentItems.get(lastChoice - 1));
+							Armors.removeItems(Weapons.departmentItems.get(lastChoice - 1));
+							System.out.println(Cart.activeCart.get(lastChoice).toString() + " has been added to the cart.");
+							continue;
+						}
+					else 
+					{
+						continue;
+					}
+				
+					case 2:
+					System.out.println("You have selected: " + Weapons.departmentItems.get(lastChoice - 1).toString());
+					System.out.print("Select 1 to add to cart or 2 to return to Main Menu: ");
+					userChoice = input.nextInt();
+						if (userChoice == 1)
+						{
+							Cart.activeCart.add(Weapons.departmentItems.get(lastChoice - 1));
+							Armors.removeItems(Weapons.departmentItems.get(lastChoice - 1));
+							System.out.println(Cart.activeCart.get(lastChoice).toString() + " has been added to the cart.");
+							continue;
+						}
+						else
+						{
+							continue;
+						}
+						continue;
+				}
+			
+
+				case 3:
+						System.out.println("Total of items and cost of active cart is: " + Cart.CartTotal());
+						continue;
+					
+				case 4:
+					System.out.println("Total cost: " + Cart.CartTotal());
+					Cart.checkout();
+					System.out.println("Total cost: " + Cart.CartTotal());
+					System.out.println("Checkout Successful");
+				
+				case 5: 
+						break;
+
+				case 0:
+						continue;
+						
+				}
+				continue;
+				
+			
+		
+	}while (Cart.activeCart.size() != 0);
+
+
+/* 
 		// First Query
 		System.out.print("Please select an option listed above: ");
 		userChoice = input.nextInt();
@@ -94,14 +233,14 @@ public class StoreFront {
 					// Do while choice != 0
 					do	{
 						// lastChoice is stored for purchase/price checking later
-						System.out.print("type 1 to buy or 2 to cancel: ");
+						System.out.print("Type 1 to add to cart or 2 to cancel: ");
 						int lastChoice = userChoice;
 						userChoice = input.nextInt();
 					
 						// Has enough funds
 						if (userChoice == 1 && userWallet >= Armors.departmentItems.get(lastChoice - 1).itemPrice)
 						{
-							System.out.println(" test " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
+							System.out.println("Item Cost: " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
 							System.out.println(Armors.departmentItems.get(lastChoice - 1) + " Sold to user!");
 							Armors.removeItems(Armors.departmentItems.get(lastChoice - 1));
 							return;
@@ -111,7 +250,7 @@ public class StoreFront {
 						if (userChoice == 1 && userWallet < Armors.departmentItems.get(lastChoice - 1).itemPrice)
 						{
 
-							System.out.println(" test " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
+							System.out.println("Item Cost: " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
 							System.out.println("Insufficient Funds");
 							continue;
 						}
@@ -139,14 +278,14 @@ public class StoreFront {
 					// Do while choice != 0
 					do	{
 						// lastChoice is stored for purchase/price checking later
-						System.out.print("type 1 to buy or 2 to cancel: ");
+						System.out.print("Type 1 to add to cart or 2 to cancel: ");
 						int lastChoice = userChoice;
 						userChoice = input.nextInt();
 					
 						// Has enough funds
 						if (userChoice == 1 && userWallet >= Armors.departmentItems.get(lastChoice - 1).itemPrice)
 						{
-							System.out.println(" test " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
+							System.out.println("Item Cost: " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
 							System.out.println(Armors.departmentItems.get(lastChoice - 1) + " Sold to user!");
 							Armors.removeItems(Armors.departmentItems.get(lastChoice - 1));
 							return;
@@ -156,7 +295,7 @@ public class StoreFront {
 						if (userChoice == 1 && userWallet < Armors.departmentItems.get(lastChoice - 1).itemPrice)
 						{
 
-							System.out.println(" test " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
+							System.out.println("Item Cost: " + Armors.departmentItems.get(lastChoice - 1).itemPrice);
 							System.out.println("Insufficient Funds");
 							continue;
 						}
@@ -207,23 +346,24 @@ public class StoreFront {
 			{
 				// Sell or return
 				// lastChoice is stored for purchase/price checking later
-				System.out.print("type 1 to buy or 2 to cancel: ");
+				System.out.print("Type 1 to add to cart or 2 to cancel: ");
 				int lastChoice = userChoice;
 				userChoice = input.nextInt();
 			
 				// Has enough funds
 				if (userChoice == 1 && userWallet >= Weapons.departmentItems.get(lastChoice - 1).itemPrice)
 				{
-					System.out.println(" test " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
-					System.out.println(Weapons.departmentItems.get(lastChoice - 1) + " Sold to user!");
+					System.out.println("Item Cost: " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
+					System.out.println(Weapons.departmentItems.get(lastChoice - 1) + " added to users Cart!");
+					Cart.activeCart.add(Weapons.departmentItems.get(lastChoice - 1));
 					Weapons.removeItems(Weapons.departmentItems.get(lastChoice - 1));
-					return;
+					continue;
 				}
 
 				// Insufficient Funds
 				if (userChoice == 1 && userWallet < Weapons.departmentItems.get(lastChoice - 1).itemPrice)
 				{
-					System.out.println(" test " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
+					System.out.println("Item Cost: " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
 					System.out.println("Insufficient Funds");
 					continue;
 				}
@@ -231,7 +371,7 @@ public class StoreFront {
 				//Returns to previous menu (hopefully)
 				if (userChoice == 2)
 				{
-					return;
+					continue;
 				}
 
 				// Cycles back if improper response
@@ -255,14 +395,14 @@ public class StoreFront {
 			{
 				// Sell or return
 				// lastChoice is stored for purchase/price checking later
-				System.out.print("type 1 to buy or 2 to cancel: ");
+				System.out.print("Type 1 to add to cart or 2 to cancel: ");
 				final int lastChoice = userChoice;
 				userChoice = input.nextInt();
 			
 				// Has enough funds
 				if (userChoice == 1 && userWallet >= Weapons.departmentItems.get(lastChoice - 1).itemPrice)
 				{
-					System.out.println(" test " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
+					System.out.println("Item Cost: " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
 					System.out.println(Weapons.departmentItems.get(lastChoice - 1) + " Sold to user!");
 					Weapons.removeItems(Weapons.departmentItems.get(lastChoice - 1));
 					return;
@@ -271,7 +411,7 @@ public class StoreFront {
 				// Insufficient Funds
 				if (userChoice == 1 && userWallet < Weapons.departmentItems.get(lastChoice - 1).itemPrice)
 				{
-					System.out.println(" test " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
+					System.out.println("Item Cost: " + Weapons.departmentItems.get(lastChoice - 1).itemPrice);
 					System.out.println("Insufficient Funds");
 					continue;
 				}
@@ -298,7 +438,15 @@ public class StoreFront {
 		}
 		System.out.println("Test done");
 		}
-	}
+		else
+		{
+			return;
+		}
+	
+} while (Cart.activeCart.size() != 0); 
+*/
+
+}
 }
 	
 
