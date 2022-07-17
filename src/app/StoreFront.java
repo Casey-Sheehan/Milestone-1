@@ -75,7 +75,9 @@ public class StoreFront {
 		System.out.println("2. List Weapons");
 		System.out.println("3. Cart Total");
 		System.out.println("4. Checkout");
-		System.out.println("5. Exit");
+		System.out.println("5. List Inventory");
+		System.out.println("6. Sort Shop Inventory");
+		System.out.println("7. Exit");
 		System.out.print("Please Select an Option Listed Above: ");
 		userChoice = input.nextInt();
 		
@@ -87,21 +89,21 @@ public class StoreFront {
 						System.out.println("Item " + (i + 1) + ": " + Armors.departmentItems.get(i).toString());
 					}
 					System.out.print("Choose an item from the above list: ");
-					lastChoice = userChoice;
 					userChoice = input.nextInt();
+					lastChoice = userChoice;
 					
 
 					switch (userChoice)
 					{
 						case 1:
-							System.out.println("You have selected: " + Armors.departmentItems.get(lastChoice - 1).toString());
+							System.out.println("You have selected: " + Armors.departmentItems.get(userChoice - 1).toString());
 							System.out.print("Select 1 to add to cart or 2 to return to Main Menu: ");
 							userChoice = input.nextInt();
 							if (userChoice == 1)
 								{
 									Cart.activeCart.add(Armors.departmentItems.get(lastChoice - 1));
 									Armors.removeItems(Armors.departmentItems.get(lastChoice - 1));
-									System.out.println(Cart.activeCart.get(lastChoice).toString() + " has been added to the cart.");
+									System.out.println(Cart.activeCart.get(Cart.activeCart.size() - 1).toString() + " has been added to the cart.");
 									continue;
 								}
 							else 
@@ -117,7 +119,7 @@ public class StoreFront {
 								{
 									Cart.activeCart.add(Armors.departmentItems.get(lastChoice - 1));
 									Armors.removeItems(Armors.departmentItems.get(lastChoice - 1));
-									System.out.println(Cart.activeCart.get(lastChoice).toString() + " has been added to the cart.");
+									System.out.println(Cart.activeCart.get(Cart.activeCart.size() - 1).toString() + " has been added to the cart.");
 									continue;
 								}
 								
@@ -130,7 +132,7 @@ public class StoreFront {
 								
 						}
 						break;
-					
+		
 				
 	
 			
@@ -144,10 +146,10 @@ public class StoreFront {
 				System.out.print("Choose an option from the list above: ");
 				
 				userChoice = input.nextInt();
+				lastChoice = userChoice;
 
-				switch (userChoice) {
-				
-					lastChoice = userChoice;
+				switch (userChoice) 
+				{
 					case 1: 
 					System.out.println("You have selected: " + Weapons.departmentItems.get(lastChoice - 1).toString());
 					System.out.print("Select 1 to add to cart or 2 to return to Main Menu: ");
@@ -155,8 +157,8 @@ public class StoreFront {
 					if (userChoice == 1)
 						{
 							Cart.activeCart.add(Weapons.departmentItems.get(lastChoice - 1));
-							Armors.removeItems(Weapons.departmentItems.get(lastChoice - 1));
-							System.out.println(Cart.activeCart.get(lastChoice).toString() + " has been added to the cart.");
+							Weapons.removeItems(Weapons.departmentItems.get(lastChoice - 1));
+							System.out.println(Cart.activeCart.get(Cart.activeCart.size() - 1).toString() + " has been added to the cart.");
 							continue;
 						}
 					else 
@@ -165,21 +167,20 @@ public class StoreFront {
 					}
 				
 					case 2:
-					System.out.println("You have selected: " + Weapons.departmentItems.get(lastChoice - 1).toString());
+					System.out.println("You have selected: " + Weapons.departmentItems.get(userChoice - 1).toString());
 					System.out.print("Select 1 to add to cart or 2 to return to Main Menu: ");
 					userChoice = input.nextInt();
 						if (userChoice == 1)
 						{
-							Cart.activeCart.add(Weapons.departmentItems.get(lastChoice - 1));
-							Armors.removeItems(Weapons.departmentItems.get(lastChoice - 1));
-							System.out.println(Cart.activeCart.get(lastChoice).toString() + " has been added to the cart.");
+							Cart.activeCart.add(Weapons.departmentItems.get(userChoice - 1));
+							Weapons.removeItems(Weapons.departmentItems.get(userChoice - 1));
+							System.out.println(Cart.activeCart.get(Cart.activeCart.size() - 1).toString() + " has been added to the cart.");
 							continue;
 						}
 						else
 						{
 							continue;
 						}
-						continue;
 				}
 			
 
@@ -192,10 +193,32 @@ public class StoreFront {
 					Cart.checkout();
 					System.out.println("Total cost: " + Cart.CartTotal());
 					System.out.println("Checkout Successful");
+					continue;
 				
 				case 5: 
+						Cart.returnInventory();
+						continue;
+
+				case 6:
+					for (i = 0; i < Armors.departmentItems.size(); ++i)
+						{
+							System.out.print("Unsorted items: "+ Armors.departmentItems.get(i).itemName);
+						}
+					System.out.println(" ");
+					for (i = 0; i < Weapons.departmentItems.size(); ++i)
+						{
+							System.out.print("Unsorted items: " + Weapons.departmentItems.get(i).itemName);
+						}
+					System.out.println(" ");
+
+					Armors.sortItems();
+					Weapons.sortItems();
+
+				case 7:
 						break;
 
+
+						
 				case 0:
 						continue;
 						

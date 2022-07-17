@@ -3,6 +3,8 @@ import app.ShoppingCart;
 import app.SalableItem;
 import app.StoreFront;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -23,31 +25,7 @@ public class InventoryManager {
 		this.departmentName = newDeptName;
 	}
 	
-	/**
-	 * First set of tests for initial functionality
-	 */
-	public void InventoryManagerTest1()
-	{
-		System.out.println("Begin InventoryManagerTest1:");
-		System.out.println("getDeptName returns: " + this.getDeptName());
-		this.setDeptName("Arts and Crafts");
-		System.out.println("setDeptName performed, departmentName is now: " + this.getDeptName());
-		System.out.print("List contains: ");
-		this.getDeptItems();
-		System.out.println("Array size: " + this.departmentItems.size());
-		System.out.println("Invtest1 done");
-	}
-	
-	/**
-	 * Second set of tests for initial functionality
-	 */
-	public void InventoryManagerTest2()
-	{
-		System.out.println("Begin InventoryManagerTest2:");
-		System.out.println("setDeptName performed, departmentName is now: " + this.getDeptName());
-		System.out.println("Array size: " + this.departmentItems.size());	
-		System.out.println("Invtest2 done");
-	}
+
 	
 	/**
 	 * 
@@ -91,6 +69,27 @@ public class InventoryManager {
 	public void addItems(SalableItem newItem)
 	{
 		departmentItems.add(newItem);
+	}
+
+	/**
+	 * Sorts our inventory managers into alphabetical order
+	 */
+	public void sortItems()
+	{
+		// ascending sort
+		// credit to Greg Anderson on youtube, his video helped a ton
+		//
+		Collections.sort(departmentItems, new Comparator<SalableItem>()
+		{
+			public int compare(SalableItem i1, SalableItem i2)
+			{
+				return String.valueOf(i1.itemName).compareTo(i2.itemName);
+			}
+		});
+		for (int i=0;i<departmentItems.size();++i)
+		{
+		System.out.println("Item name: " + departmentItems.get(i).itemName);
+		}
 	}
 	
 	/**
