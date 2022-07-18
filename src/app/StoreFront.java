@@ -63,9 +63,6 @@ public class StoreFront {
 		System.out.println("getItemPrice(index) test: " + Armors.departmentItems.get(0).itemPrice);
 
 		// Beginning of Shop Interface
-
-	
-
 	do{
 		System.out.println("=======");
 		System.out.println("Welcome to " + Shop.shopName);
